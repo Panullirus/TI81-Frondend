@@ -1,0 +1,41 @@
+footer {
+  height: auto;
+  background-color: #393E46;
+  padding: 10px;
+}
+
+.line-container {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.line-container p {
+  color: #fafafa;
+  font-size: 20px;
+}
+
+.line-container .line-map {
+  border-top: 2px solid #fafafa;
+}
+
+.line-container .title {
+  color: #EEEEEE;
+  text-align: center;
+}
+
+p {
+  color: #EEEEEE;
+  text-align: center;
+}
+
+.telegram {
+  color: #EEEEEE;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.copy {
+  height: 100%;
+  width: 100%;
+  background-color: #222831;
+}

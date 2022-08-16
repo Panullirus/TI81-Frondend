@@ -1,4 +1,4 @@
-<!-- <mat-drawer-container>
+<mat-drawer-container>
   <mat-drawer (click)="onClickScroll('about')" #drawer>
       <button class="btn" mat-button>
     Sobre mí
@@ -12,7 +12,7 @@
     Contáctame
   </button>
       <br>
-      <button class="btn-admon" routerLink="/login">
+      <button class="btn-admon" (click)="goAdmin()">
     Administrar
   </button>
 
@@ -26,7 +26,7 @@
                   <button class="button-actions" (click)="onClickScroll('about')">Sobre mí</button>
                   <button class="button-actions" (click)="onClickScroll('skills')">Tecnologías</button>
                   <button class="button-actions" (click)="onClickScroll('contact')">Contáctame</button>
-                  <button class="button-admon" (click)="goLogin()">Administrar</button>
+                  <button class="button-admon" (click)="goAdmin()">Administrar</button>
               </div>
               <div *ngIf="currentScreenSize !== '3'">
                   <button mat-icon-button>
@@ -42,12 +42,10 @@
           <div id="skills">
               <app-skills></app-skills>
           </div>
-          <div id="contact">
-              <app-contact></app-contact>
-          </div>
       </div>
-      <app-footer></app-footer>
-  </mat-drawer-content>
+      <div id="contact">
+        <app-footer></app-footer>
+      </div>
+    </mat-drawer-content>
 </mat-drawer-container>
- -->
- <router-outlet></router-outlet>
+

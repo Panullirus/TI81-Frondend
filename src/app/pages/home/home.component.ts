@@ -1,18 +1,23 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Subject, takeUntil } from 'rxjs';
+
+// Ocupas este
 import { ViewportScroller } from '@angular/common';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
-export class AppComponent {
-onClickScroll(elementId: string): void{
-  this.viewportScroller.scrollToAnchor(elementId)
-}
+export class HomeComponent implements OnDestroy {
+
+  //Este
+  onClickScroll(elementId: string): void {
+    this.viewportScroller.scrollToAnchor(elementId)
+  }
   title = 'cv';
 
   destroyed = new Subject<void>();
@@ -26,11 +31,11 @@ onClickScroll(elementId: string): void{
     [Breakpoints.XLarge, '3'],
   ]);
 
-  goLogin(){
-    this.router.navigate(['/login']);
+  goAdmin() {
+    this.router.navigate(['administrador'])
   }
 
-  constructor(breakpointObserver: BreakpointObserver, private viewportScroller: ViewportScroller, private router: Router) {
+  constructor(breakpointObserver: BreakpointObserver, private viewportScroller: ViewportScroller, private router: Router, private _user: UserService) {
     breakpointObserver
       .observe([
         Breakpoints.XSmall,
@@ -49,4 +54,14 @@ onClickScroll(elementId: string): void{
       });
   }
 
+  goAdministrar(){
+    this.router.navigate(['administrador'])
+  }
+
+  ngOnDestroy(): void {
+    this.destroyed.next();
+    this.destroyed.complete();
+  }
+
 }
+

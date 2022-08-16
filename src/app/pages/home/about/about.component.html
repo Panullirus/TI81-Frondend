@@ -1,0 +1,87 @@
+<div class="container-info">
+  <div class="flex-container">
+      <div class="flex-item-left">
+          <img class="user-photo" src="../../../../assets/profile-image.jpg" alt="">
+      </div>
+      <div *ngFor="let profile of setProfile">
+
+      </div>
+      <div class="flex-item-right" *ngFor="let profile of setProfile">
+          <h1 align="left" class="name">{{profile.name}}</h1>
+          <h1 align="left" class="second-name">{{profile.lastname}}</h1>
+          <hr>
+          <br>
+          <div class="description">
+              <p>{{profile.description}}
+              </p>
+          </div>
+      </div>
+  </div>
+  <br>
+  <div class="line-container">
+      <p class="title">Estudios</p>
+      <hr class="line">
+  </div>
+  <br>
+  <div class="timeline">
+      <div class="vertical-line">
+
+      </div>
+      <mat-grid-list cols={{currentScreenSize}} rowHeight="17em">
+        <mat-grid-tile *ngFor="let estudio of setSchoolar">
+          <div class="school">
+            <p>{{estudio.date_start}}</p>
+            <p>-----------</p>
+            <p>{{estudio.date_end}}</p>
+            <p>{{estudio.school}}</p>
+            <p>{{estudio.career}}</p>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+  </div>
+  <br>
+  <div class="line-container">
+      <p class="title">Experiencia, Competencias e Idiomas</p>
+      <hr class="line">
+  </div>
+  <br>
+  <div class="experience">
+      <mat-grid-list cols={{currrentScreenSizeExperiencia}} rowHeight="10em">
+          <mat-grid-tile colspan="1" rowspan="2">
+              <div class="experiencia" *ngFor="let experience of setExperiencia">
+                  <p class="title-experiencia">
+                      {{experience.job}}
+                  </p>
+                  <p class="date">
+                      {{experience.date_start}}
+                  </p>
+                  <p class="date">
+                    {{experience.end}}
+                </p>
+                  <p class="type">
+                      {{experience.work_station}}
+                  </p>
+                  <hr>
+              </div>
+          </mat-grid-tile>
+          <mat-grid-tile colspan="1" rowspan="2">
+              <div class="competencias">
+                  <p class="competencia" *ngFor="let competencia of setCompetencias">
+                      {{competencia.competencie}}
+                  </p>
+              </div>
+          </mat-grid-tile>
+          <mat-grid-tile *ngFor="let lenguaje of setLenguajes">
+              <div class="competencias">
+                  <p class="competencia">
+                      {{lenguaje.languaje}}
+                  </p>
+                  <div class="domain-father">
+                      <div class="domain-child" [style.width]="lenguaje.languaje_domain+'%'"></div>
+                  </div>
+              </div>
+          </mat-grid-tile>
+      </mat-grid-list>
+  </div>
+</div>
+<br>

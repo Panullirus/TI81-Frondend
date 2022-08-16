@@ -1,0 +1,150 @@
+.container-info {
+  background: #fafafa;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  font-size: 30px;
+  text-align: center;
+  background-color: #fafafa;
+}
+
+.flex-item-left {
+  background-color: #fafafa;
+  padding: 10px;
+  flex: 50%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.flex-item-left .user-photo {
+  height: 250px;
+  border-radius: 10px 0 10px 0;
+}
+
+.flex-item-right {
+  background-color: #fafafa;
+  padding: 10px;
+  flex: 50%;
+}
+
+.flex-item-right .description {
+  width: auto;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: #222831;
+}
+
+.flex-item-right .description p {
+  justify-self: left;
+  color: #fafafa;
+  font-size: 17px;
+}
+
+.flex-item-right .name {
+  color: #393E46;
+  margin: 1px;
+  font-size: 35px;
+  text-align: center;
+}
+
+.flex-item-right hr {
+  border-top: 2px solid #fafafa;
+}
+
+.flex-item-right .second-name {
+  color: #393E46;
+  margin: 1px;
+  font-size: 40px;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+.timeline mat-grid-list mat-grid-tile .school {
+  height: 216px;
+  width: 170px;
+  color: #222831;
+  text-align: center;
+  border-width: 6px;
+  border-radius: 15px;
+  border-color: #222831;
+}
+
+.line-container {
+  padding-left: 5%;
+  padding-right: 5%;
+  background-color: #fafafa;
+}
+
+.line-container p {
+  color: #fafafa;
+  font-size: 20px;
+}
+
+.line-container .line-map {
+  border-top: 2px solid #fafafa;
+}
+
+.line-container .title {
+  color: #222831;
+  text-align: center;
+}
+
+.line-container .line {
+  border-top: 2px solid black;
+}
+
+.title-experiencia {
+  font-weight: 500;
+}
+
+.experience mat-grid-list mat-grid-tile .experiencia {
+  height: 70%;
+  width: 90%;
+  color: #fafafa;
+  text-align: center;
+  border-radius: 15px;
+  background-color: #222831;
+  padding: 5px;
+}
+
+.experience mat-grid-list mat-grid-tile .competencias {
+  height: 70%;
+  width: 90%;
+  color: #fafafa;
+  text-align: center;
+  border-radius: 15px;
+  background-color: #222831;
+  padding: 5px;
+}
+
+.experience mat-grid-list mat-grid-tile .domain-father {
+  width: 100px;
+  height: 15px;
+  background: #fafafa;
+  border-radius: 50px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.experience mat-grid-list mat-grid-tile .domain-child {
+  box-sizing: border-box;
+  position: absolute;
+  height: 15px;
+  background: #00ADB5;
+  border: 1px solid #fafafa;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 50px;
+}
+
+@media (max-width: 800px) {
+  .flex-container {
+      flex-direction: column;
+  }
+}

@@ -1,0 +1,22 @@
+<footer>
+  <mat-grid-list cols={{currentScreenSize}} rowHeight="17em">
+      <mat-grid-tile>
+          <div class="maps">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7465.382330244024!2d-87.05941002728227!3d20.682139932183652!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f4e5d56d9a57da5%3A0xd45f3dbeca1cd305!2sVillas%20Riviera%2C%2077724%20Playa%20del%20Carmen%2C%20Quintana%20Roo!5e0!3m2!1sen!2smx!4v1655407565238!5m2!1sen!2smx"
+                  width="500" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+          <div class="contact">
+              <div class="line-container">
+                  <p class="title">Medios de contacto</p>
+                  <hr class="line">
+              </div>
+              <br>
+              <p>(984) 115 8179</p>
+              <p>tyahir27@gmail.com</p>
+              <p class="telegram" (click)="openBottomSheet()">Da click aquí</p>
+          </div>
+      </mat-grid-tile>
+  </mat-grid-list>
+</footer>

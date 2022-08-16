@@ -1,0 +1,71 @@
+mat-grid-list {
+  background: #fafafa;
+}
+
+.skill-container {
+  border-radius: 15px;
+  height: 250px;
+  width: 200px;
+  background-color: #222831;
+}
+
+.skill-container .title-skill {
+  text-align: center;
+}
+
+.skill-container .count-skill {
+  margin: 25px;
+}
+
+.skill-container .img-skill {
+  height: 100px;
+  display: block;
+  margin: auto;
+}
+
+.skill-container .domain-father {
+  width: 120px;
+  height: 15px;
+  background: #fafafa;
+  border-radius: 50px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.skill-container .domain-child {
+  box-sizing: border-box;
+  position: absolute;
+  height: 15px;
+  background: #00ADB5;
+  border: 1px solid #fafafa;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 50px;
+}
+
+.line-container .line {
+  border-top: 2px solid black;
+}
+
+.line-container {
+  padding-left: 5%;
+  padding-right: 5%;
+  background-color: #fafafa;
+}
+
+.line-container p {
+  color: #fafafa;
+  font-size: 20px;
+}
+
+.line-container .line-map {
+  border-top: 2px solid #fafafa;
+}
+
+mat-grid-tile {
+  padding-right: 3px;
+}
+
+.line-container .title {
+  color: #222831;
+  text-align: center;
+}

@@ -1,0 +1,41 @@
+<div class="info">
+  <br>
+  <div class="line-container">
+      <p class="title">Tecnologías</p>
+      <hr class="line">
+  </div>
+  <div class="container-info">
+      <html style="scroll-behavior: smooth;">
+      <mat-grid-list cols={{currentScreenSize}} rowHeight="150px">
+          <mat-grid-tile *ngFor="let skill of setTechnologies" colspan="1" rowspan="2">
+              <div class="skill-container">
+                  <img class="img-skill" src={{skill.tecnologie_svg}}>
+                  <p class="title-skill" style="color: #FFFFFF;">{{skill.tecnologie_name}}</p>
+                  <div class="domain-father">
+                      <div class="domain-child" [style.width]="skill.tecnologie_domain+'%'"></div>
+                  </div>
+              </div>
+          </mat-grid-tile>
+      </mat-grid-list>
+      <div class="line-container">
+          <p class="title">Lenguajes, Hojas de estilos y Etiquetas.</p>
+          <hr class="line">
+      </div>
+      <mat-grid-list cols={{currentScreenSize}} rowHeight="150px">
+          <mat-grid-tile *ngFor="let languaje of setLanguajes" colspan="1" rowspan="2">
+              <div class="skill-container">
+                  <img class="img-skill" src={{languaje.languaje_svg}}>
+                  <p class="title-skill" style="color: #FFFFFF;">{{languaje.languaje}}</p>
+                  <div class="domain-father">
+                      <div class="domain-child" [style.width]="languaje.languaje_domain+'%'"></div>
+                  </div>
+              </div>
+          </mat-grid-tile>
+      </mat-grid-list>
+      <div class="line-container">
+          <hr class="line-map">
+      </div>
+
+      </html>
+  </div>
+</div>

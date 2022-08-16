@@ -1,0 +1,111 @@
+<div class="container">
+  <div class="goback">
+    <button mat-button (click)="goBack()">
+      <mat-icon>arrow_back</mat-icon>
+      Regresar
+    </button>
+  </div>
+  <br>
+  <mat-grid-list cols="1" rowHeight="20em">
+    <mat-grid-tile class="estudios">
+      <table mat-table [dataSource]="setEstudios" class="mat-elevation-z8">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="career">
+          <th mat-header-cell *matHeaderCellDef> Carrera </th>
+          <td mat-cell *matCellDef="let element"> {{element.career}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="date_start">
+          <th mat-header-cell *matHeaderCellDef> Fecha de inicio </th>
+          <td mat-cell *matCellDef="let element"> {{element.date_start}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="date_end">
+          <th mat-header-cell *matHeaderCellDef> Fecha de fin </th>
+          <td mat-cell *matCellDef="let element"> {{element.date_end}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="school">
+          <th mat-header-cell *matHeaderCellDef> Escuela </th>
+          <td mat-cell *matCellDef="let element"> {{element.school}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="operations">
+          <th mat-header-cell *matHeaderCellDef>  </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-button><mat-icon class="edit-button" (click)="editSchool(element.id)">edit</mat-icon></button>
+            <button mat-button color="warn"><mat-icon class="delete-button">delete</mat-icon></button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumnsEstudios"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumnsEstudios;"></tr>
+      </table>
+
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <table mat-table [dataSource]="setExperiencias" class="mat-elevation-z8">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef> Trabajo </th>
+          <td mat-cell *matCellDef="let element"> {{element.job}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="date_start">
+          <th mat-header-cell *matHeaderCellDef> Año de inicio </th>
+          <td mat-cell *matCellDef="let element"> {{element.date_start}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="date_end">
+          <th mat-header-cell *matHeaderCellDef> Año de fin </th>
+          <td mat-cell *matCellDef="let element"> {{element.date_end}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="type">
+          <th mat-header-cell *matHeaderCellDef> Empresa </th>
+          <td mat-cell *matCellDef="let element"> {{element.work_station}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="operations">
+          <th mat-header-cell *matHeaderCellDef>  </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-button><mat-icon class="edit-button" (click)="editExperience(element.id)">edit</mat-icon></button>
+            <button mat-button color="warn"><mat-icon class="delete-button">delete</mat-icon></button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayColumnsExperiences"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayColumnsExperiences;"></tr>
+      </table>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <table mat-table [dataSource]="setCompetencias" class="mat-elevation-z8">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="competencia">
+          <th mat-header-cell *matHeaderCellDef> Competencia </th>
+          <td mat-cell *matCellDef="let element"> {{element.competencie}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="operations">
+          <th mat-header-cell *matHeaderCellDef>  </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-button><mat-icon class="edit-button" (click)="editCompetencias(element.id)">edit</mat-icon></button>
+            <button mat-button color="warn"><mat-icon class="delete-button">delete</mat-icon></button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumnsCompetencias"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumnsCompetencias;"></tr>
+      </table>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

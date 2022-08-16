@@ -1,0 +1,19 @@
+<div class="bg">
+  <div class="form">
+    <div class="container-form">
+      <p class="title">Iniciar sesión</p>
+      <form [formGroup]="loginForm" (ngSubmit)="logIn(loginForm)">
+        <p>Usuario</p>
+        <mat-form-field class="input-field" appearance="outline">
+          <input matInput placeholder="Ingresa tu usuario" formControlName="username" type="text" required>
+        </mat-form-field>
+        <p>Contraseña</p>
+        <mat-form-field class="input-field" appearance="outline">
+          <input matInput placeholder="Ingresa tu contraseña" formControlName="password" type="password" required>
+        </mat-form-field>
+        <button mat-raised-button class="button-ingresar" type="submit">INGRESAR</button>
+      </form>
+      <button mat-button class="button-regresar" (click)="goBack()">REGRESAR</button>
+    </div>
+  </div>
+</div>
