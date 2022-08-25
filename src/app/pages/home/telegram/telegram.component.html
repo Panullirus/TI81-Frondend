@@ -1,0 +1,6 @@
+<div>
+  <form [formGroup]="sendMessageForm" (ngSubmit)="sendMessage(sendMessageForm)">
+    <input type="text" formControlName="message" />
+    <button>Enviar</button>
+  </form>
+</div>

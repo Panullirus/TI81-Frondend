@@ -15,7 +15,6 @@ interface Schoolar{
 })
 export class AboutComponent implements OnDestroy, OnInit {
 
-  public estudios: any[] = this._user.getEstudios();
   destroyed = new Subject<void>();
   currentScreenSize: string | undefined;
   currrentScreenSizeExperiencia: string | undefined;
@@ -61,18 +60,6 @@ export class AboutComponent implements OnDestroy, OnInit {
       });
   }
 
-  languajes: any = [
-    {
-      typeLanguaje: 'Español',
-      domain: 100
-    },
-    {
-      typeLanguaje: 'Inglés',
-      domain: 50
-    }
-  ]
-  competencias: any = this._user.getCompetencias();
-
   async ngOnInit() {
     await this.getProfileData();
 
@@ -82,8 +69,7 @@ export class AboutComponent implements OnDestroy, OnInit {
 
     await this.getCompetencias();
 
-    const res = await this.getLenguajes();
-    console.log(res);
+    await this.getLenguajes();
   }
 
   async getProfileData(){

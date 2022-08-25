@@ -6,79 +6,107 @@
     </button>
   </div>
   <br>
-  <mat-grid-list cols="1" rowHeight="20em">
+
+  <!-- Tablas -->
+
+  <mat-grid-list cols="1" rowHeight="500px">
     <mat-grid-tile class="estudios">
       <table mat-table [dataSource]="setEstudios" class="mat-elevation-z8">
 
         <!-- Position Column -->
         <ng-container matColumnDef="career">
-          <th mat-header-cell *matHeaderCellDef> Carrera </th>
-          <td mat-cell *matCellDef="let element"> {{element.career}} </td>
+          <th style="text-align: center;" mat-header-cell *matHeaderCellDef> Carrera </th>
+          <td style="text-align: center;" mat-cell *matCellDef="let element"> {{element.career}} </td>
         </ng-container>
 
         <!-- Name Column -->
         <ng-container matColumnDef="date_start">
-          <th mat-header-cell *matHeaderCellDef> Fecha de inicio </th>
-          <td mat-cell *matCellDef="let element"> {{element.date_start}} </td>
+          <th style="text-align: center;" mat-header-cell *matHeaderCellDef> Inicio </th>
+          <td style="text-align: center;" mat-cell *matCellDef="let element"> {{element.date_start}} </td>
         </ng-container>
 
         <!-- Weight Column -->
         <ng-container matColumnDef="date_end">
-          <th mat-header-cell *matHeaderCellDef> Fecha de fin </th>
-          <td mat-cell *matCellDef="let element"> {{element.date_end}} </td>
+          <th style="text-align: center;" mat-header-cell *matHeaderCellDef> Fin </th>
+          <td style="text-align: center;" mat-cell *matCellDef="let element"> {{element.date_end}} </td>
         </ng-container>
 
         <!-- Weight Column -->
         <ng-container matColumnDef="school">
-          <th mat-header-cell *matHeaderCellDef> Escuela </th>
-          <td mat-cell *matCellDef="let element"> {{element.school}} </td>
+          <th style="text-align: center;" mat-header-cell *matHeaderCellDef> Escuela </th>
+          <td style="text-align: center;" mat-cell *matCellDef="let element"> {{element.school}} </td>
         </ng-container>
 
         <ng-container matColumnDef="operations">
-          <th mat-header-cell *matHeaderCellDef>  </th>
-          <td mat-cell *matCellDef="let element">
-            <button mat-button><mat-icon class="edit-button" (click)="editSchool(element.id)">edit</mat-icon></button>
-            <button mat-button color="warn"><mat-icon class="delete-button">delete</mat-icon></button>
+          <th style="text-align: center;" mat-header-cell *matHeaderCellDef>
+            <button type="button" class="btn btn-primary" (click)="open(createEstudio, 'update-school')">Agregar</button>
+          </th>
+          <td style="text-align: center;" mat-cell *matCellDef="let element">
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="updateSchool(element, contentSchool)">
+                <mat-icon>edit</mat-icon>
+                <span>Editar</span>
+              </button>
+              <button mat-menu-item (click)="deleteEstudio(element.id)">
+                <mat-icon>delete</mat-icon>
+                <span>Borrar</span>
+              </button>
+            </mat-menu>
           </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumnsEstudios"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumnsEstudios;"></tr>
       </table>
-
     </mat-grid-tile>
     <mat-grid-tile>
       <table mat-table [dataSource]="setExperiencias" class="mat-elevation-z8">
 
         <!-- Position Column -->
         <ng-container matColumnDef="title">
-          <th mat-header-cell *matHeaderCellDef> Trabajo </th>
-          <td mat-cell *matCellDef="let element"> {{element.job}} </td>
+          <th style="text-align: center;" mat-header-cell *matHeaderCellDef> Trabajo </th>
+          <td style="text-align: center;" mat-cell *matCellDef="let element"> {{element.job}} </td>
         </ng-container>
 
         <!-- Name Column -->
         <ng-container matColumnDef="date_start">
-          <th mat-header-cell *matHeaderCellDef> Año de inicio </th>
-          <td mat-cell *matCellDef="let element"> {{element.date_start}} </td>
+          <th style="text-align: center;" mat-header-cell *matHeaderCellDef> Inicio </th>
+          <td style="text-align: center;" mat-cell *matCellDef="let element"> {{element.date_start}} </td>
         </ng-container>
 
         <!-- Name Column -->
         <ng-container matColumnDef="date_end">
-          <th mat-header-cell *matHeaderCellDef> Año de fin </th>
-          <td mat-cell *matCellDef="let element"> {{element.date_end}} </td>
+          <th style="text-align: center;" mat-header-cell *matHeaderCellDef> Fin </th>
+          <td style="text-align: center;" mat-cell *matCellDef="let element"> {{element.date_end}} </td>
         </ng-container>
 
         <!-- Weight Column -->
         <ng-container matColumnDef="type">
-          <th mat-header-cell *matHeaderCellDef> Empresa </th>
-          <td mat-cell *matCellDef="let element"> {{element.work_station}} </td>
+          <th style="text-align: center;" mat-header-cell *matHeaderCellDef> Empresa </th>
+          <td style="text-align: center;" mat-cell *matCellDef="let element"> {{element.work_station}} </td>
         </ng-container>
 
         <ng-container matColumnDef="operations">
-          <th mat-header-cell *matHeaderCellDef>  </th>
-          <td mat-cell *matCellDef="let element">
-            <button mat-button><mat-icon class="edit-button" (click)="editExperience(element.id)">edit</mat-icon></button>
-            <button mat-button color="warn"><mat-icon class="delete-button">delete</mat-icon></button>
+          <th style="text-align: center;" mat-header-cell *matHeaderCellDef>
+            <button type="button" class="btn btn-primary" (click)="open(createExperience, 'create-experiencie')">Agregar</button>
+          </th>
+          <td style="text-align: center;" mat-cell *matCellDef="let element">
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="updateExperiencia(element, contentExperience)">
+                <mat-icon>edit</mat-icon>
+                <span>Editar</span>
+              </button>
+              <button mat-menu-item (click)="deleteExperiencia(element.id)">
+                <mat-icon>delete</mat-icon>
+                <span>Borrar</span>
+              </button>
+            </mat-menu>
           </td>
         </ng-container>
 
@@ -91,15 +119,28 @@
 
         <!-- Position Column -->
         <ng-container matColumnDef="competencia">
-          <th mat-header-cell *matHeaderCellDef> Competencia </th>
-          <td mat-cell *matCellDef="let element"> {{element.competencie}} </td>
+          <th style="text-align: center;" mat-header-cell *matHeaderCellDef> Competencia </th>
+          <td style="text-align: center;" mat-cell *matCellDef="let element"> {{element.competencie}} </td>
         </ng-container>
 
         <ng-container matColumnDef="operations">
-          <th mat-header-cell *matHeaderCellDef>  </th>
-          <td mat-cell *matCellDef="let element">
-            <button mat-button><mat-icon class="edit-button" (click)="editCompetencias(element.id)">edit</mat-icon></button>
-            <button mat-button color="warn"><mat-icon class="delete-button">delete</mat-icon></button>
+          <th style="text-align: center;" mat-header-cell *matHeaderCellDef>
+            <button type="button" class="btn btn-primary" (click)="open(createCompetencie, 'create-competencia')">Agregar</button>
+          </th>
+          <td style="text-align: center;" style="text-align: center;" mat-cell *matCellDef="let element">
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="updateCompetencie(element, contentCompetencie)">
+                <mat-icon>edit</mat-icon>
+                <span>Editar</span>
+              </button>
+              <button mat-menu-item (click)="deleteCompetencia(element.id)">
+                <mat-icon>delete</mat-icon>
+                <span>Borrar</span>
+              </button>
+            </mat-menu>
           </td>
         </ng-container>
 
@@ -107,5 +148,453 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumnsCompetencias;"></tr>
       </table>
     </mat-grid-tile>
+    <mat-grid-tile>
+      <table mat-table [dataSource]="setLanguajeProgramming" class="mat-elevation-z8">
+        <ng-container matColumnDef="languaje">
+          <th style="text-align: center;" mat-header-cell *matHeaderCellDef> Lenguaje </th>
+          <td style="text-align: center;" mat-cell *matCellDef="let element"> {{element.languaje}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="languaje_domain">
+          <th style="text-align: center;" mat-header-cell *matHeaderCellDef> dominio </th>
+          <td style="text-align: center;" mat-cell *matCellDef="let element"> {{element.languaje_domain}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="languaje_svg">
+          <th style="text-align: center;" mat-header-cell *matHeaderCellDef> Imagen </th>
+          <td style="text-align: center;" mat-cell *matCellDef="let element"> <img src="{{element.languaje_svg}}" height="75"> </td>
+        </ng-container>
+
+        <ng-container matColumnDef="operations">
+          <th style="text-align: center;" mat-header-cell *matHeaderCellDef>
+            <button type="button" class="btn btn-primary" (click)="open(createLanguajeProgramming, 'create-languajeProgramming')">Agregar</button>
+          </th>
+          <td style="text-align: center;" mat-cell *matCellDef="let element">
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="updateLanguajeProgramming(element, contentLanguajeProgramming)">
+                <mat-icon>edit</mat-icon>
+                <span>Editar</span>
+              </button>
+              <button mat-menu-item (click)="deleteLanguajeProgramming(element.id)">
+                <mat-icon>delete</mat-icon>
+                <span>Borrar</span>
+              </button>
+            </mat-menu>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayColumsLanguajesPrograming"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayColumsLanguajesPrograming;"></tr>
+      </table>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <table mat-table [dataSource]="setLanguaje" class="mat-elevation-z8">
+        <ng-container matColumnDef="languaje">
+          <th style="text-align: center;" mat-header-cell *matHeaderCellDef> Lenguaje </th>
+          <td style="text-align: center;" mat-cell *matCellDef="let element"> {{element.languaje}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="languaje_domain">
+          <th style="text-align: center;" mat-header-cell *matHeaderCellDef> dominio </th>
+          <td style="text-align: center;" mat-cell *matCellDef="let element"> {{element.languaje_domain}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="operations">
+          <th style="text-align: center;" mat-header-cell *matHeaderCellDef>
+            <button type="button" class="btn btn-primary" (click)="open(createLanguaje, 'create-languaje')">Agregar</button>
+          </th>
+          <td style="text-align: center;" mat-cell *matCellDef="let element">
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="updateLanguaje(element, contentLanguaje)">
+                <mat-icon>edit</mat-icon>
+                <span>Editar</span>
+              </button>
+              <button mat-menu-item (click)="deleteLanguaje(element.id)">
+                <mat-icon>delete</mat-icon>
+                <span>Borrar</span>
+              </button>
+            </mat-menu>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayColumsLanguaje"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayColumsLanguaje;"></tr>
+      </table>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <table mat-table [dataSource]="setTecnologia" class="mat-elevation-z8">
+        <ng-container matColumnDef="tecnologie_name">
+          <th style="text-align: center;" mat-header-cell *matHeaderCellDef> Tecnología </th>
+          <td style="text-align: center;" mat-cell *matCellDef="let element"> {{element.tecnologie_name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="tecnologie_domain">
+          <th style="text-align: center;" mat-header-cell *matHeaderCellDef> dominio </th>
+          <td style="text-align: center;" mat-cell *matCellDef="let element"> {{element.tecnologie_domain}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="tecnologie_svg">
+          <th style="text-align: center;" mat-header-cell *matHeaderCellDef> Imagen </th>
+          <td style="text-align: center;" mat-cell *matCellDef="let element"> <img src="{{element.tecnologie_svg}}" height="75"> </td>
+        </ng-container>
+
+        <ng-container matColumnDef="operations">
+          <th style="text-align: center;" mat-header-cell *matHeaderCellDef>
+            <button type="button" class="btn btn-primary" (click)="open(createTecnologias, 'create-tecnologia')">Agregar</button>
+          </th>
+          <td style="text-align: center;" mat-cell *matCellDef="let element">
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="updateTecnologia(element, contentTecnologias)">
+                <mat-icon>edit</mat-icon>
+                <span>Editar</span>
+              </button>
+              <button mat-menu-item (click)="deleteTecnologia(element.id)">
+                <mat-icon>delete</mat-icon>
+                <span>Borrar</span>
+              </button>
+            </mat-menu>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayColumsTecnologia"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayColumsTecnologia;"></tr>
+      </table>
+    </mat-grid-tile>
   </mat-grid-list>
 </div>
+
+<!-- Campos para actualizar -->
+<ng-template #contentCompetencie let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="update-competencias">Actualizar competencia</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="updateCompetenciaForm">
+      <div class="mb-3">
+        <label>Competencia</label>
+        <input id="typeahead-basic" formControlName="competencie" type="text" class="form-control"/>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="onSubmmitUpdateCompetencias(updateCompetenciaForm)">Acutalizar</button>
+  </div>
+</ng-template>
+
+<ng-template #contentSchool let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="update-school">Actualizar escolaridad</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="updateEstudiosForm">
+      <div class="mb-3">
+        <label>Carrera</label>
+        <input id="typeahead-basic" formControlName="career" type="text" class="form-control"/>
+      </div>
+      <div class="mb-3">
+        <label>Escuela</label>
+        <input id="typeahead-basic" formControlName="school" type="text" class="form-control"/>
+      </div>
+      <div class="mb-3">
+        <label>Inicio</label>
+        <input id="typeahead-basic" formControlName="date_start" type="date" class="form-control"/>
+      </div>
+      <div class="mb-3">
+        <label>Fin</label>
+        <input id="typeahead-basic" formControlName="date_end" type="date" class="form-control"/>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="onSubmmitUpdateSchool(updateEstudiosForm)">Actualizar</button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #contentExperience let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="update-experiencie">Actualizar experiencia</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="updateExperienceForm">
+      <div class="mb-3">
+        <label>Trabajo</label>
+        <input id="typeahead-basic" formControlName="job" type="text" class="form-control"/>
+      </div>
+      <div class="mb-3">
+        <label>Lugar</label>
+        <input id="typeahead-basic" formControlName="work_station" type="text" class="form-control"/>
+      </div>
+      <div class="mb-3">
+        <label>Inicio</label>
+        <input id="typeahead-basic" formControlName="date_start" type="date" class="form-control"/>
+      </div>
+      <div class="mb-3">
+        <label>Fin</label>
+        <input id="typeahead-basic" formControlName="date_end" type="date" class="form-control"/>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="onSubmmitUpdateExperiencia(updateExperienceForm)">Save</button>
+  </div>
+</ng-template>
+
+<ng-template #contentLanguajeProgramming let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="update-languajeProgramming">Actualizar lenguaje de programación</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="updateLanguajeProgrammingForm">
+      <div class="mb-3">
+        <label>Lenguaje</label>
+        <input id="typeahead-basic" formControlName="languaje" type="text" class="form-control"/>
+      </div>
+      <div class="mb-3">
+        <label>Dominio</label>
+        <input id="typeahead-basic" formControlName="languaje_domain" type="text" class="form-control"/>
+      </div>
+      <div class="mb-3">
+        <label>URI de la imágen</label>
+        <input id="typeahead-basic" formControlName="languaje_svg" type="text" class="form-control"/>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="onSubmmitUpdateLanguajeProgramming(updateLanguajeProgrammingForm)">Save</button>
+  </div>
+</ng-template>
+
+<ng-template #contentLanguaje let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="create-languajeProgramming">Actualizar lenguaje</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="updateLanguajeForm">
+      <div class="mb-3">
+        <label>Lenguaje</label>
+        <input id="typeahead-basic" formControlName="languaje" type="text" class="form-control"/>
+      </div>
+      <div class="mb-3">
+        <label>Dominio</label>
+        <input id="typeahead-basic" formControlName="languaje_domain" type="text" class="form-control"/>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="onSubmmitUpdateLanguaje(updateLanguajeForm)">Save</button>
+  </div>
+</ng-template>
+
+<ng-template #contentTecnologias let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="create-languajeProgramming">Actualizar tecnología</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="updateTecnologiaForm">
+      <div class="mb-3">
+        <label>Tecnología</label>
+        <input id="typeahead-basic" formControlName="tecnologie_name" type="text" class="form-control"/>
+      </div>
+      <div class="mb-3">
+        <label>Dominio</label>
+        <input id="typeahead-basic" formControlName="tecnologie_domain" type="text" class="form-control"/>
+      </div>
+      <div class="mb-3">
+        <label>URI de la imágen</label>
+        <input id="typeahead-basic" formControlName="tecnologie_svg" type="text" class="form-control"/>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="onSubmmitUpdateTecnologia(updateTecnologiaForm)">Save</button>
+  </div>
+</ng-template>
+
+<!-- Campos para crear -->
+<ng-template #createEstudio let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="update-estudios">Agregar escolaridad</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="createEstudiosForm" (ngSubmit)="createSchool(createEstudiosForm)">
+      <div class="mb-3">
+        <label>Carrera</label>
+        <input id="typeahead-basic" type="text" class="form-control" formControlName="career">
+      </div>
+      <div class="mb-3">
+        <label>Inicio</label>
+        <input id="typeahead-basic" type="date" class="form-control" formControlName="date_start">
+      </div>
+      <div class="mb-3">
+        <label>Fin</label>
+        <input id="typeahead-basic" type="date" class="form-control" formControlName="date_end">
+      </div>
+      <div class="mb-3">
+        <label>Escuela</label>
+        <input id="typeahead-basic" type="text" class="form-control" formControlName="school"/>
+      </div>
+      <div class="buttons-section">
+        <button type="submit" class="btn btn-outline-dark" *ngIf="spinner">
+          <p>Agregar</p>
+        </button>
+        <button type="submit" class="btn btn-outline-dark" *ngIf="!spinner" disabled>
+          <div class="spinner-border" role="status"></div>
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+  </div>
+</ng-template>
+
+<ng-template #createExperience let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="create-experiencie">Agregar experiencia</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="createExperienciaForm" (ngSubmit)="createExperiencia(createExperienciaForm)">
+      <div class="mb-3">
+        <label>Trabajo</label>
+        <input id="typeahead-basic" formControlName="job" type="text" class="form-control"/>
+      </div>
+      <div class="mb-3">
+        <label>Lugar</label>
+        <input id="typeahead-basic" formControlName="work_station" type="text" class="form-control"/>
+      </div>
+      <div class="mb-3">
+        <label>Inicio</label>
+        <input id="typeahead-basic" formControlName="date_start" type="date" class="form-control"/>
+      </div>
+      <div class="mb-3">
+        <label>Fin</label>
+        <input id="typeahead-basic" formControlName="date_end" type="date" class="form-control"/>
+      </div>
+      <div class="buttons-section">
+        <button type="submit" class="btn btn-outline-dark" *ngIf="spinner">
+          <p>Agregar</p>
+        </button>
+        <button type="submit" class="btn btn-outline-dark" *ngIf="!spinner" disabled>
+          <div class="spinner-border" role="status"></div>
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+  </div>
+</ng-template>
+
+<ng-template #createCompetencie let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="create-competencia">Agregar competencia</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="createCompetenciaForm" (ngSubmit)="createCompetencia(createCompetenciaForm)">
+      <div class="mb-3">
+        <label>Competencia</label>
+        <input id="typeahead-basic" formControlName="competencie" type="datetime" class="form-control"/>
+      </div>
+      <div class="buttons-section">
+        <button type="submit" class="btn btn-outline-dark" *ngIf="spinner">
+          <p>Agregar</p>
+        </button>
+        <button type="submit" class="btn btn-outline-dark" *ngIf="!spinner" disabled>
+          <div class="spinner-border" role="status"></div>
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+  </div>
+</ng-template>
+
+<ng-template #createLanguajeProgramming let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="create-languajeProgramming">Crear lenguaje de programación</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="createLanguajeProgrammingForm">
+      <div class="mb-3">
+        <label>Lenguaje</label>
+        <input id="typeahead-basic" formControlName="languaje" type="text" class="form-control"/>
+      </div>
+      <div class="mb-3">
+        <label>Dominio</label>
+        <input id="typeahead-basic" formControlName="languaje_domain" type="text" class="form-control"/>
+      </div>
+      <div class="mb-3">
+        <label>URI de la imágen</label>
+        <input id="typeahead-basic" formControlName="languaje_svg" type="text" class="form-control"/>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="createLanguajesProgramming(createLanguajeProgrammingForm)">Save</button>
+  </div>
+</ng-template>
+
+<ng-template #createLanguaje let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="create-languajeProgramming">Crear lenguaje</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="createLanguajeForm">
+      <div class="mb-3">
+        <label>Lenguaje</label>
+        <input id="typeahead-basic" formControlName="languaje" type="text" class="form-control"/>
+      </div>
+      <div class="mb-3">
+        <label>Dominio</label>
+        <input id="typeahead-basic" formControlName="languaje_domain" type="text" class="form-control"/>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="createLanguajes(createLanguajeForm)">Save</button>
+  </div>
+</ng-template>
+
+<ng-template #createTecnologias let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="create-languajeProgramming">Agregar nueva tecnología</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="createTecnologiaForm">
+      <div class="mb-3">
+        <label>Tecnología</label>
+        <input id="typeahead-basic" formControlName="tecnologie_name" type="text" class="form-control"/>
+      </div>
+      <div class="mb-3">
+        <label>Dominio</label>
+        <input id="typeahead-basic" formControlName="tecnologie_domain" type="text" class="form-control"/>
+      </div>
+      <div class="mb-3">
+        <label>URI de la imágen</label>
+        <input id="typeahead-basic" formControlName="tecnologie_svg" type="text" class="form-control"/>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="createTecnologia(createTecnologiaForm)">Save</button>
+  </div>
+</ng-template>

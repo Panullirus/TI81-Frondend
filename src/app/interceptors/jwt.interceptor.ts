@@ -24,7 +24,8 @@ export class JwtInterceptor implements HttpInterceptor {
         Authentication: `${this._auth.getToken()}`
       };
     }
-      request = request.clone({setHeaders: headers})
+
+    request = request.clone({setHeaders: headers})
 
       return next.handle(request).pipe(tap((value: HttpEvent<any>) => {
 

@@ -4,5 +4,6 @@ table {
 }
 
 .container {
-  margin: 10px;
+  align-items: center;
+
 }

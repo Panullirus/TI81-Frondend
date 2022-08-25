@@ -91,11 +91,9 @@ export class SkillsComponent implements OnInit, OnDestroy {
 
   async ngOnInit() {
     this.setSize()
-    const response = await this.getTechnologies()
-    console.log(response)
+    await this.getTechnologies()
 
-    const responseLenguajes = await this.getLenguajesProgramacion()
-    console.log(responseLenguajes)
+    await this.getLenguajesProgramacion()
   }
 
   ngOnDestroy(): void {

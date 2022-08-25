@@ -1,24 +1,36 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Subject, takeUntil } from 'rxjs';
-
-// Ocupas este
 import { ViewportScroller } from '@angular/common';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+import { TelegramService } from 'src/app/services/telegram.service';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnDestroy {
+export class HomeComponent implements OnDestroy, OnInit {
 
-  //Este
+  public sendMessageForm = new FormGroup({
+    message: new FormControl
+  })
+
+  public messageContainer: any = [];
+
+  async sendMessage(form: any) {
+    const res = await this._telegram.sendMessage(form.value)
+
+    console.log(res)
+  }
+
   onClickScroll(elementId: string): void {
     this.viewportScroller.scrollToAnchor(elementId)
   }
   title = 'cv';
+  public chat: boolean = false;
 
   destroyed = new Subject<void>();
   currentScreenSize: string | undefined;
@@ -35,7 +47,15 @@ export class HomeComponent implements OnDestroy {
     this.router.navigate(['administrador'])
   }
 
-  constructor(breakpointObserver: BreakpointObserver, private viewportScroller: ViewportScroller, private router: Router, private _user: UserService) {
+  click() {
+    this.chat = true
+  }
+
+  cerrarChat() {
+    this.chat = false
+  }
+
+  constructor(breakpointObserver: BreakpointObserver, private viewportScroller: ViewportScroller, private router: Router, private _user: UserService, private _telegram: TelegramService) {
     breakpointObserver
       .observe([
         Breakpoints.XSmall,
@@ -58,9 +78,35 @@ export class HomeComponent implements OnDestroy {
     this.router.navigate(['administrador'])
   }
 
+  async ngOnInit() {
+     await this.getMessages()
+    setTimeout(() => {
+      this.router.navigate(['/'])
+    }, 1000);
+  }
+
   ngOnDestroy(): void {
     this.destroyed.next();
     this.destroyed.complete();
+  }
+
+  async getMessages() {
+    const data = await this._telegram.getMessages();
+
+    for(let message of data){
+
+      let date = new Date(message.date * 1000)
+      let hours = date.getHours();
+      let minutes = "0" + date.getMinutes();
+
+      let formattedTime = hours + ':' + minutes.substr(-2);
+
+      const messageContent = {...JSON.parse(message.from), text: message.text, date: formattedTime}
+
+      this.messageContainer.push(messageContent)
+    }
+
+    console.log(this.messageContainer)
   }
 
 }

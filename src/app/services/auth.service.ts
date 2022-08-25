@@ -1,4 +1,3 @@
-import { tokenize } from '@angular/compiler/src/ml_parser/lexer';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -14,6 +13,7 @@ export class AuthService {
   }
 
   getToken(){
+    //validar si es un jwt
     const token = localStorage.getItem('token');
     if(token != undefined){
       return token;

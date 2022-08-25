@@ -16,6 +16,11 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { MenuComponent } from './menu/menu.component';
 import { AdministradorComponent } from './administrador/administrador.component';
 import { EditComponent } from './edit/edit.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { TelegramComponent } from './telegram/telegram.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +31,8 @@ import { EditComponent } from './edit/edit.component';
     MenuComponent,
     AdministradorComponent,
     FooterComponent,
-    EditComponent
+    EditComponent,
+    TelegramComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +43,12 @@ import { EditComponent } from './edit/edit.component';
     MatSidenavModule,
     MatIconModule,
     MatButtonModule,
-    MatTableModule
+    MatTableModule,
+    MatMenuModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   exports: [
     AboutComponent,

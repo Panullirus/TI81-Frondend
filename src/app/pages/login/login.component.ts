@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
+import {MatDialog} from '@angular/material/dialog';
+import { MenuComponent } from '../home/menu/menu.component';
 
 @Component({
   selector: 'app-login',
@@ -19,10 +21,14 @@ export class LoginComponent implements OnInit {
     password: new FormControl()
   });
 
-  constructor(private router: Router, private _user: UserService) {
+  constructor(private router: Router, private _user: UserService, public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
+  }
+
+  openDialog() {
+    this.dialog.open(MenuComponent);
   }
 
   goBack(){
@@ -30,9 +36,11 @@ export class LoginComponent implements OnInit {
   }
 
   async logIn(form: FormGroup){
-    const res = await this._user.signUp(form.value)
+    const res: any = await this._user.signUp(form.value)
     if(res){
       this.router.navigate(['administrador'])
+    }else{
+      this.openDialog()
     }
   }
 
