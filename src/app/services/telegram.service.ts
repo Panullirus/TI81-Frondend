@@ -30,7 +30,6 @@ export class TelegramService {
   public async getMessages(){
     const response: any = await this._httpClient.get(this.url + '/api/telegram/messages').toPromise();
     return response.message;
-
   }
 
 }
