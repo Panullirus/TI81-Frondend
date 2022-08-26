@@ -22,7 +22,7 @@ export class HomeComponent implements OnDestroy, OnInit {
 
   async sendMessage(form: any) {
     const res = await this._telegram.sendMessage(form.value)
-
+    this.getMessages();
     console.log(res)
   }
 
@@ -72,7 +72,7 @@ export class HomeComponent implements OnDestroy, OnInit {
           }
         }
       });
-  }
+    }
 
   goAdministrar(){
     this.router.navigate(['administrador'])
@@ -105,8 +105,6 @@ export class HomeComponent implements OnDestroy, OnInit {
 
       this.messageContainer.push(messageContent)
     }
-
-    console.log(this.messageContainer)
   }
 
 }

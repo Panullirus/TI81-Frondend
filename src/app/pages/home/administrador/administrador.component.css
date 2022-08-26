@@ -5,5 +5,9 @@ table {
 
 .container {
   align-items: center;
+  padding: 15px;
+}
 
+.spacer{
+  flex: 1 1 auto;
 }

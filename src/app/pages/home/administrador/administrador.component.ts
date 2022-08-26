@@ -165,6 +165,11 @@ export class AdministradorComponent implements OnInit, OnDestroy {
     this.open(content, 'update-tecnologia');
   }
 
+  logOut(){
+    localStorage.clear();
+    location.reload()
+  }
+
   async deleteTecnologia(id: number){
     const res = await this._table.deleteTecnologia({id: id});
     if(res){

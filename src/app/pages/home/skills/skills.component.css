@@ -3,6 +3,7 @@ mat-grid-list {
 }
 
 .skill-container {
+  padding: 45px;
   border-radius: 15px;
   height: 250px;
   width: 200px;

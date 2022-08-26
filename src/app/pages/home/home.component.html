@@ -58,8 +58,14 @@
           </div>
           <div class="message">
             <form [formGroup]="sendMessageForm" (ngSubmit)="sendMessage(sendMessageForm)">
-              <input id="typeahead-basic" formControlName="message" type="text" class="form-control" width="50" placeholder="Escribe tu mensaje..."/>
-              <button mat-icon-button color="primary"><mat-icon>send</mat-icon></button>
+              <div class="row">
+                <div class="col-lg-10" style="margin-top: 7px;">
+                  <input id="typeahead-basic" formControlName="message" type="text" class="form-control" width="50" placeholder="Escribe tu mensaje..."/>
+                </div>
+                <div class="col-lg-2">
+                  <button mat-icon-button color="primary"><mat-icon>send</mat-icon></button>
+                </div>
+              </div>
             </form>
           </div>
 
